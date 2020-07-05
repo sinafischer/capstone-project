@@ -15,8 +15,20 @@ export default createGlobalStyle`
   margin: 0;
   padding: 0;
 }
+  
 
 body {
   font-size: 18px;
+  background-color: var(--senary);
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  color: #72809d;
 }
+
+h1, h2, h3 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  color: #72809d;
+}
+
 `
