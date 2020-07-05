@@ -1,11 +1,11 @@
 import React from 'react'
+import ActivityList from './components/ActivityList'
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header></header>
+    <div>
+      <h1>My Activities</h1>
+      <ActivityList />
     </div>
   )
 }
-
-export default App
