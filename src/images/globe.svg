@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="54" viewBox="0 0 64 54">
+    <defs>
+        <filter id="prefix__a">
+            <feColorMatrix in="SourceGraphic" values="0 0 0 0 0.729412 0 0 0 0 0.909804 0 0 0 0 0.909804 0 0 0 1.000000 0"/>
+        </filter>
+        <filter id="prefix__b">
+            <feColorMatrix in="SourceGraphic" values="0 0 0 0 0.729412 0 0 0 0 0.909804 0 0 0 0 0.909804 0 0 0 1.000000 0"/>
+        </filter>
+        <path id="prefix__c" d="M31.295 2.238c15.844 0 28.688 11.021 28.688 24.617S47.139 51.473 31.295 51.473c-15.843 0-28.687-11.022-28.687-24.618 0-13.596 12.844-24.617 28.687-24.617zM18.393 29.094H7.967c1.078 8.363 8.122 15.183 17.4 17.255-3.968-5.119-6.377-11.042-6.974-17.255zm36.23 0H44.205c-.584 6.184-2.997 12.12-6.978 17.255 9.276-2.073 16.32-8.892 17.398-17.255zm-15.647 0H23.622c.655 6.072 3.32 11.856 7.673 16.67 4.371-4.831 7.039-10.634 7.681-16.67zM25.363 7.363l-.068.014C16.053 9.47 9.042 16.276 7.967 24.618h10.42c.584-6.184 2.996-12.12 6.976-17.255zm5.932.582c-4.37 4.832-7.038 10.635-7.68 16.671h15.354c-.655-6.071-3.32-11.856-7.674-16.67zm5.93-.584l.246.321c3.82 5.045 6.142 10.85 6.727 16.934h10.426c-1.078-8.363-8.122-15.182-17.399-17.255z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd" filter="url(#prefix__a)" transform="translate(-19 -19)">
+        <g filter="url(#prefix__b)" transform="translate(0 3)">
+            <g transform="translate(19.671 16.113)">
+                <mask id="prefix__d" fill="#fff">
+                    <use xlink:href="#prefix__c"/>
+                </mask>
+                <use fill="#000" fill-rule="nonzero" xlink:href="#prefix__c"/>
+                <g fill="#000" mask="url(#prefix__d)">
+                    <path d="M0 0H62.591V53.71H0z"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

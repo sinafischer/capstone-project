@@ -1,15 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-import ActivityList from './components/ActivityList'
+import Header from './components/Header'
+import ActivityListItem from './components/ActivityListItem'
 
 export default function App() {
   return (
-    <StyledApp>
-      <h1>My Activities</h1>
-      <ActivityList />
-    </StyledApp>
+    <div>
+      <Header />
+      <StyledList>
+        <ActivityListItem />
+      </StyledList>
+    </div>
   )
 }
-const StyledApp = styled.div`
-  padding: 20px;
+
+const StyledList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 30px 30px;
 `

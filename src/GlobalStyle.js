@@ -12,18 +12,22 @@ export default createGlobalStyle`
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
   
 
 body {
-  font-size: 18px;
   background-color: var(--senary);
+  font-size: 18px;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
   color: #72809d;
+  line-height: 1.22;
+  letter-spacing: 0.39px;
+  grid-template-rows: 85px auto;
+  height: 100vh;
+  margin: 0;
 }
+
 
 h1, h2, h3 {
   font-family: 'Ubuntu', sans-serif;
