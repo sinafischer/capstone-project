@@ -23,7 +23,7 @@ export default function ActivityList() {
 
 const DivisionLine = styled.div`
   background-color: var(--primary);
-  width: 320px;
+  max-width: 100%;
   height: 1px;
   margin: 50px 0;
 `
