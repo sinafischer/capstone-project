@@ -1,17 +1,35 @@
 import React from 'react'
 import GlobalStyle from '../GlobalStyle'
 import Header from './Header'
+import styled from 'styled-components'
+import globe from '../images/globe.svg'
+import { addDecorator } from '@storybook/react'
 
 export default {
   component: Header,
   title: 'Header',
 }
-export const ToStorybook = () => (
+
+addDecorator(s => (
   <>
     <GlobalStyle />
-    <Header />
+    {s()}
   </>
+))
+
+export const ToStorybook = () => (
+  <StyledHeader>
+    <img src={globe} alt="" />
+    <span>VacationDetails</span>
+  </StyledHeader>
 )
-ToStorybook.story = {
-  name: 'Header',
-}
+const StyledHeader = styled.header`
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--primary);
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin: 30px;
+`
