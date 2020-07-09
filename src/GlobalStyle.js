@@ -31,8 +31,14 @@ body {
 
 h1, h2, h3 {
   font-family: 'Ubuntu', sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   color: #72809d;
+}
+
+a {
+  color: var(--tertiary);
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
 }
 
 `
