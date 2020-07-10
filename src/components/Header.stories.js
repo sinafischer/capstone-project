@@ -17,7 +17,7 @@ addDecorator(s => (
   </>
 ))
 
-export const ToStorybook = () => (
+export const header = () => (
   <StyledHeader>
     <img src={globe} alt="" />
     <span>VacationDetails</span>

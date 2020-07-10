@@ -6,10 +6,10 @@ import ShowMoreText from 'react-show-more-text'
 export default function ActivityList() {
   return (
     <>
-      {activities.map((activity) => {
+      {activities.map(activity => {
         return (
           <li key={activity.name}>
-            <DivisionLine />
+            <DivisionLine data-testid="division-line" />
             <h3>{activity.name}</h3>
             <ShowMoreText lines={1} more="More" less="Less" expanded={false}>
               <p>{activity.details}</p>

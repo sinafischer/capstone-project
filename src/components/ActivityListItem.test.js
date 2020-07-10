@@ -1,15 +1,23 @@
+import '@testing-library/jest-dom/extend-expect'
 import React from 'react'
 import ActivityListItem from './ActivityListItem'
 import { render, screen } from '@testing-library/react'
 
 describe('ActivityListItem.test.js', () => {
-  it('should contain headings', () => {
+  it('should display the activity name', () => {
     render(<ActivityListItem />)
-    expect(screen.getAllByRole('heading')).toBeInTheDocument()
+    const activityName = screen.getAllByRole('heading')
+    expect(activityName.length).toBeGreaterThan(4)
   })
 
-  // it('should exist a link more', () => {
-  //   render(<ActivityListItem />)
-  //   expect(screen.getAllByRole('h3')).toBeInTheDocument()
-  // })
+  it('should display links', () => {
+    render(<ActivityListItem />)
+    const linkMore = screen.getAllByRole('link')
+    expect(linkMore.length).toBeGreaterThan(4)
+  })
+  it('should display a division lines', () => {
+    render(<ActivityListItem />)
+    const divisionLines = screen.getAllByTestId('division-line')
+    expect(divisionLines.length).toBeGreaterThan(4)
+  })
 })
