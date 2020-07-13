@@ -1,7 +1,21 @@
 import React from 'react'
+import styled from 'styled-components'
+import Header from './components/Header'
+import ActivityListItem from './components/ActivityListItem'
 
-function App() {
-  return <div className="App"></div>
+export default function App() {
+  return (
+    <div>
+      <Header />
+      <StyledList>
+        <ActivityListItem />
+      </StyledList>
+    </div>
+  )
 }
 
-export default App
+const StyledList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 30px 30px;
+`
