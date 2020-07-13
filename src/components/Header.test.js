@@ -14,7 +14,7 @@ describe('Header.test.js', () => {
     expect(screen.getByRole('img')).toBeInTheDocument()
   })
 
-  it('should show an image', () => {
+  it('should have a visible image', () => {
     render(<Header />)
     expect(screen.getByRole('img')).toBeVisible()
   })
