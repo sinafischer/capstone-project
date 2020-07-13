@@ -9,11 +9,11 @@ export default function ActivityList() {
       {activities.map(activity => {
         return (
           <li key={activity.name}>
-            <DivisionLine data-testid="division-line" />
             <h3>{activity.name}</h3>
             <ShowMoreText lines={1} more="More" less="Less" expanded={false}>
               <p>{activity.details}</p>
             </ShowMoreText>
+            <DivisionLine data-testid="division-line" />
           </li>
         )
       })}

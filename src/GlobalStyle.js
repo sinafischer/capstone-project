@@ -8,6 +8,10 @@ export default createGlobalStyle`
   --quarternary: #a2829a;
   --quinary: #e8dfba;
   --senary: #fdfdfd;
+  --text-primary: #72809d;
+  --text-secondary: #d7e1ea;
+  --text-tertiary: #f0f4f8;
+  --text-quarternary: #fdfdfd;
 }
 
 * {
@@ -20,10 +24,9 @@ body {
   font-size: 18px;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
-  color: #72809d;
+  color: var(--text-primary);
   line-height: 1.22;
   letter-spacing: 0.39px;
-  grid-template-rows: 85px auto;
   height: 100vh;
   margin: 0;
 }
@@ -32,7 +35,7 @@ body {
 h1, h2, h3 {
   font-family: 'Ubuntu', sans-serif;
   font-weight: 500;
-  color: #72809d;
+  color: var(--text-primary);
 }
 
 a {
