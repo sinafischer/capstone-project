@@ -1,32 +1,52 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers'
+import * as yup from 'yup'
 import styled from 'styled-components'
 
-export default function AddActivityForm() {
-  const { register, handleSubmit, errors } = useForm()
-  const onSubmit = data => console.log(data)
+const schema = yup.object().shape({
+  name: yup
+    .string()
+    .min(2)
+    .max(100)
+    .required(),
+  details: yup.string().max(1000),
+})
+
+export default function AddActivityForm({ updateActivities }) {
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(schema),
+  })
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(updateActivities)}>
         <StyledForm>
-          <StyledLabel for="name">
+          <StyledLabel>
             {'Activity name'}
             <StyledInput
               name="name"
-              ref={register({ required: true })}
+              ref={register}
               placeholder="Please, type your activity's name here"
             />
-            {errors.name && 'An activity name is required'}
+            {errors.name && errors.name.type === 'max' ? (
+              <div>{errorMessageMax}</div>
+            ) : (
+              ''
+            )}
           </StyledLabel>
-          <label for="details">
+          <label>
             {'Activity details'}
-
             <StyledTextarea
               name="details"
               ref={register}
               placeholder="Please, write a description of the activity or some useful information"
             />
+            {errors.name && errors.name.type === 'max' ? (
+              <div>{errorMessageMax}</div>
+            ) : (
+              ''
+            )}
           </label>
           <StyledAddButton> Add </StyledAddButton>
         </StyledForm>
