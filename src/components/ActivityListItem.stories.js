@@ -1,5 +1,5 @@
 import React from 'react'
-import ActivityListItem from '../components/ActivityListItem'
+import ActivityListItem from './ActivityListItem'
 import GlobalStyle from '../GlobalStyle'
 import { addDecorator } from '@storybook/react'
 import ShowMoreText from 'react-show-more-text'

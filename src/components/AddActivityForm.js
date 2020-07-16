@@ -10,33 +10,37 @@ export default function AddActivityForm({ setActivity }) {
   return (
     <>
       <StyledForm>
-        <form onSubmit={handleSubmit}>
-          <StyledLabel>
+        <form onSubmit={handleSubmit} data-testid="form">
+          <StyledLabel htmlFor="name">
             Activity name
             <StyledInput
               name="name"
+              id="name"
               onChange={handleChange}
               value={newActivity.name}
               type="text"
               minLength="3"
+              maxLength="70"
               placeholder="Please, type your activity's name here"
               autoFocus
               required
             />
-            {newActivity.name.length <= 3 && (
-              <StyledError>Please use at least 3 characters</StyledError>
-            )}
-            {newActivity.name.length >= 70 && (
-              <StyledError>Please use a maximum of 70 characters</StyledError>
-            )}
           </StyledLabel>
-          <StyledLabel>
+          {newActivity.name.length <= 3 && (
+            <StyledError>Please use at least 3 characters</StyledError>
+          )}
+          {newActivity.name.length >= 70 && (
+            <StyledError>Please use a maximum of 70 characters</StyledError>
+          )}
+          <StyledLabel hmltFor="details">
             Activity details
             <StyledTextarea
               name="details"
+              id="details"
               onChange={handleChange}
               value={newActivity.details}
               type="text"
+              maxLength="500"
               placeholder="Please, write a description of the activity or some useful information"
             />
             {newActivity.name.length >= 500 && (
