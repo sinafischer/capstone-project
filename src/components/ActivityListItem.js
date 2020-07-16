@@ -7,13 +7,13 @@ export default function ActivityListItem({ activities }) {
     <>
       {activities.map(activity => {
         return (
-          <li key={activity.name} activities={activities}>
+          <StyledLi key={activity.name} activities={activities}>
+            <DivisionLine data-testid="division-line" />
             <h3>{activity.name}</h3>
             <ShowMoreText lines={1} more="More" less="Less" expanded={false}>
               <p>{activity.details}</p>
             </ShowMoreText>
-            <DivisionLine data-testid="division-line" />
-          </li>
+          </StyledLi>
         )
       })}
     </>
@@ -25,4 +25,10 @@ const DivisionLine = styled.div`
   max-width: 100%;
   height: 1px;
   margin: 50px 0;
+`
+
+const StyledLi = styled.li`
+  :last-child {
+    margin-bottom: 100px;
+  }
 `

@@ -8,32 +8,45 @@ export default function AddActivityForm({ setActivity }) {
   })
 
   return (
-    <StyledForm>
-      <form onSubmit={handleSubmit}>
-        <StyledLabel>
-          Activity name
-          <StyledInput
-            name="name"
-            onChange={handleChange}
-            value={newActivity.name}
-            type="text"
-            placeholder="Please, type your activity's name here"
-          />
-        </StyledLabel>
-        <StyledLabel>
-          Activity details
-          <StyledTextarea
-            name="details"
-            onChange={handleChange}
-            value={newActivity.details}
-            type="text"
-            placeholder="Please, write a description of the activity or some useful information"
-          />
-        </StyledLabel>
-        <StyledAddButton type="submit"> Add </StyledAddButton>
-      </form>
-      <DivisionLine />
-    </StyledForm>
+    <>
+      <StyledForm>
+        <form onSubmit={handleSubmit}>
+          <StyledLabel>
+            Activity name
+            <StyledInput
+              name="name"
+              onChange={handleChange}
+              value={newActivity.name}
+              type="text"
+              minLength="3"
+              placeholder="Please, type your activity's name here"
+              autoFocus
+              required
+            />
+            {newActivity.name.length <= 3 && (
+              <StyledError>Please use at least 3 characters</StyledError>
+            )}
+            {newActivity.name.length >= 70 && (
+              <StyledError>Please use a maximum of 70 characters</StyledError>
+            )}
+          </StyledLabel>
+          <StyledLabel>
+            Activity details
+            <StyledTextarea
+              name="details"
+              onChange={handleChange}
+              value={newActivity.details}
+              type="text"
+              placeholder="Please, write a description of the activity or some useful information"
+            />
+            {newActivity.name.length >= 500 && (
+              <StyledError>Please use a maximum of 500 characters</StyledError>
+            )}
+          </StyledLabel>
+          <StyledAddButton type="submit"> Add </StyledAddButton>
+        </form>
+      </StyledForm>
+    </>
   )
 
   function handleSubmit(event) {
@@ -68,8 +81,9 @@ const StyledLabel = styled.label`
 
 const StyledInput = styled.input`
   display: block;
-  width: 277px;
+  width: 280px;
   height: 40px;
+  margin: 0 auto;
   border-radius: 8px;
   border: solid 1px var(--primary);
   font-size: 1rem;
@@ -83,16 +97,16 @@ const StyledInput = styled.input`
 
 const StyledTextarea = styled.textarea`
   display: block;
-  width: 277px;
-  height: 202px;
+  width: 280px;
+  height: 200px;
+  margin: 0 auto;
   border-radius: 8px;
   border: solid 1px var(--primary);
-  margin-bottom: 40px;
   font-size: 1rem;
   color: var(--text-primary);
+  font-family: inherit;
 
   :placeholder-shown {
-    font-family: inherit;
     color: var(--text-secondary);
   }
 `
@@ -108,9 +122,8 @@ const StyledAddButton = styled.button`
   margin: 0 auto;
 `
 
-const DivisionLine = styled.div`
-  background-color: var(--primary);
-  max-width: 100%;
-  height: 1px;
-  margin: 50px 30px;
+const StyledError = styled.div`
+  color: var(--tertiary);
+  font-size: 0.8rem;
+  font-weight: 300;
 `
