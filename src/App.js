@@ -11,17 +11,15 @@ export default function App() {
     <AppGrid>
       <Header />
       <Main>
-        <AddActivityForm onSubmit={updateActivities} />
+        <AddActivityForm setActivity={updateActivities} />
         <StyledList>
           <ActivityListItem activities={activities} />
         </StyledList>
       </Main>
     </AppGrid>
   )
-  function updateActivities(activity, event) {
-    event.target.reset()
-    event.target[0].focus()
-    setActivities([...activities, activity])
+  function updateActivities(newActivity) {
+    setActivities([...activities, newActivity])
   }
 }
 

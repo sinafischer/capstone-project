@@ -1,5 +1,4 @@
 import React from 'react'
-import activities from '../activities.json'
 import styled from 'styled-components'
 import ShowMoreText from 'react-show-more-text'
 

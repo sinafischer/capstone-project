@@ -1,62 +1,59 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers'
-import * as yup from 'yup'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const schema = yup.object().shape({
-  name: yup
-    .string()
-    .min(2)
-    .max(100)
-    .required(),
-  details: yup.string().max(1000),
-})
-
-export default function AddActivityForm({ updateActivities }) {
-  const { register, handleSubmit, errors } = useForm({
-    resolver: yupResolver(schema),
+export default function AddActivityForm({ setActivity }) {
+  const [newActivity, setNewActivity] = useState({
+    name: '',
+    details: '',
   })
 
   return (
-    <>
-      <form onSubmit={handleSubmit(updateActivities)}>
-        <StyledForm>
-          <StyledLabel>
-            {'Activity name'}
-            <StyledInput
-              name="name"
-              ref={register}
-              placeholder="Please, type your activity's name here"
-            />
-            {errors.name && errors.name.type === 'max' ? (
-              <div>{errorMessageMax}</div>
-            ) : (
-              ''
-            )}
-          </StyledLabel>
-          <label>
-            {'Activity details'}
-            <StyledTextarea
-              name="details"
-              ref={register}
-              placeholder="Please, write a description of the activity or some useful information"
-            />
-            {errors.name && errors.name.type === 'max' ? (
-              <div>{errorMessageMax}</div>
-            ) : (
-              ''
-            )}
-          </label>
-          <StyledAddButton> Add </StyledAddButton>
-        </StyledForm>
+    <StyledForm>
+      <form onSubmit={handleSubmit}>
+        <StyledLabel>
+          Activity name
+          <StyledInput
+            name="name"
+            onChange={handleChange}
+            value={newActivity.name}
+            type="text"
+            placeholder="Please, type your activity's name here"
+          />
+        </StyledLabel>
+        <StyledLabel>
+          Activity details
+          <StyledTextarea
+            name="details"
+            onChange={handleChange}
+            value={newActivity.details}
+            type="text"
+            placeholder="Please, write a description of the activity or some useful information"
+          />
+        </StyledLabel>
+        <StyledAddButton type="submit"> Add </StyledAddButton>
       </form>
       <DivisionLine />
-    </>
+    </StyledForm>
   )
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    setActivity(newActivity)
+    setNewActivity({
+      name: '',
+      details: '',
+    })
+  }
+
+  function handleChange(event) {
+    setNewActivity({
+      ...newActivity,
+      [event.target.name]: event.target.value,
+    })
+  }
 }
 
-const StyledForm = styled.div`
+const StyledForm = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,6 +105,7 @@ const StyledAddButton = styled.button`
   background: var(--primary);
   border: none;
   color: var(--senary);
+  margin: 0 auto;
 `
 
 const DivisionLine = styled.div`
