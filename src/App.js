@@ -27,6 +27,8 @@ const StyledList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 30px 30px;
+  display: flex;
+  flex-direction: column-reverse;
 `
 const AppGrid = styled.div`
   display: grid;
