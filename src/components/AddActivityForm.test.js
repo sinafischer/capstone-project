@@ -7,7 +7,7 @@ import AddActivityForm from './AddActivityForm'
 describe('AddActivityForm.test.js', () => {
   it('should display the entered value of the name input field after change event', () => {
     render(<AddActivityForm />)
-    const nameInput = screen.getByLabelText('Activity name')
+    const nameInput = screen.getByTestId('activity-name')
     fireEvent.change(nameInput, { target: { value: 'activity name' } })
     expect(nameInput.value).toBe('activity name')
   })
@@ -19,10 +19,21 @@ describe('AddActivityForm.test.js', () => {
     expect(nameInput.value).toBe('activity details')
   })
 
-  it('submits the values', () => {
-    const onSubmit = jest.fn()
-    const { getByTestId } = render(<AddActivityForm />)
-    fireEvent.submit(getByTestId('form'))
-    expect(onSubmit).toHaveBeenCalled()
+  it('submits the values when name input meets required length', () => {
+    const setActivity = jest.fn()
+    const { getByText } = render(<AddActivityForm setActivity={setActivity} />)
+    const nameInput = screen.getByTestId('activity-name')
+    fireEvent.change(nameInput, { target: { value: 'activity name' } })
+    fireEvent.click(getByText('Add'))
+    expect(setActivity).toHaveBeenCalled()
+  })
+
+  it('does not call submit when the name input is less than 3 characters', () => {
+    const setActivity = jest.fn()
+    const { getByText } = render(<AddActivityForm setActivity={setActivity} />)
+    const nameInput = screen.getByTestId('activity-name')
+    fireEvent.change(nameInput, { target: { value: 'a' } })
+    fireEvent.click(getByText('Add'))
+    expect(setActivity).not.toHaveBeenCalled()
   })
 })

@@ -8,49 +8,55 @@ export default function AddActivityForm({ setActivity }) {
   })
 
   return (
-    <>
-      <StyledForm>
-        <form onSubmit={handleSubmit} data-testid="form">
-          <StyledLabel htmlFor="name">
-            Activity name
-            <StyledInput
-              name="name"
-              id="name"
-              onChange={handleChange}
-              value={newActivity.name}
-              type="text"
-              minLength="3"
-              maxLength="70"
-              placeholder="Please, type your activity's name here"
-              autoFocus
-              required
-            />
-          </StyledLabel>
+    <StyledForm>
+      <form onSubmit={handleSubmit}>
+        <StyledLabel htmlFor="name">
+          Activity name
+          <StyledInput
+            name="name"
+            id="name"
+            onChange={handleChange}
+            value={newActivity.name}
+            type="text"
+            minLength="3"
+            maxLength="40"
+            placeholder="Type your activity's name here"
+            autoFocus
+            required
+            data-testid="activity-name"
+          />
           {newActivity.name.length <= 3 && (
-            <StyledError>Please use at least 3 characters</StyledError>
+            <StyledError>
+              Please add a name with at least 3 characters
+            </StyledError>
           )}
-          {newActivity.name.length >= 70 && (
-            <StyledError>Please use a maximum of 70 characters</StyledError>
+          {newActivity.name.length >= 40 && (
+            <StyledError>Please use a maximum of 40 characters</StyledError>
           )}
-          <StyledLabel hmltFor="details">
-            Activity details
-            <StyledTextarea
-              name="details"
-              id="details"
-              onChange={handleChange}
-              value={newActivity.details}
-              type="text"
-              maxLength="500"
-              placeholder="Please, write a description of the activity or some useful information"
-            />
-            {newActivity.name.length >= 500 && (
-              <StyledError>Please use a maximum of 500 characters</StyledError>
-            )}
-          </StyledLabel>
-          <StyledAddButton type="submit"> Add </StyledAddButton>
-        </form>
-      </StyledForm>
-    </>
+        </StyledLabel>
+        <StyledLabel htmlFor="details">
+          Activity details
+          <StyledTextarea
+            name="details"
+            id="details"
+            onChange={handleChange}
+            value={newActivity.details}
+            type="text"
+            maxLength="500"
+            placeholder="Write a description of the activity or some useful information"
+          />
+          {newActivity.name.length >= 500 && (
+            <StyledError>Please use a maximum of 500 characters</StyledError>
+          )}
+        </StyledLabel>
+        <StyledAddButton
+          type="submit"
+          disabled={newActivity.name.length >= 3 ? false : true}
+        >
+          Add
+        </StyledAddButton>
+      </form>
+    </StyledForm>
   )
 
   function handleSubmit(event) {
@@ -75,12 +81,12 @@ const StyledForm = styled.section`
   justify-content: center;
   align-items: center;
   flex-flow: column wrap;
-  margin: 50px;
+  margin-bottom: 40px;
 `
 
 const StyledLabel = styled.label`
   display: block;
-  margin-bottom: 40px;
+  margin: 50px auto;
 `
 
 const StyledInput = styled.input`
@@ -93,9 +99,20 @@ const StyledInput = styled.input`
   font-size: 1rem;
   color: var(--text-primary);
 
+  /* Placeholder color was displayed a lot darker in Chrome than in the other Browsers */
+  ::-webkit-input-placeholder {
+    color: #d7e1ea;
+  }
+
   :placeholder-shown {
     font-family: inherit;
     color: var(--text-secondary);
+  }
+  :focus {
+    outline: none;
+  }
+  :invalid {
+    box-shadow: none;
   }
 `
 
@@ -110,8 +127,16 @@ const StyledTextarea = styled.textarea`
   color: var(--text-primary);
   font-family: inherit;
 
+  /* Placeholder color was displayed a lot darker in Chrome than in the other Browsers */
+  ::-webkit-input-placeholder {
+    color: #d7e1ea;
+  }
+
   :placeholder-shown {
     color: var(--text-secondary);
+  }
+  :focus {
+    outline: none;
   }
 `
 
@@ -120,14 +145,18 @@ const StyledAddButton = styled.button`
   width: 126px;
   height: 40px;
   border-radius: 20px;
-  background: var(--primary);
+  background: var(--tertiary);
   border: none;
   color: var(--senary);
   margin: 0 auto;
+
+  :disabled {
+    opacity: 40%;
+  }
 `
 
 const StyledError = styled.div`
-  color: var(--tertiary);
+  color: var(--text-primary);
   font-size: 0.8rem;
   font-weight: 300;
 `
