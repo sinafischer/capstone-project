@@ -26,15 +26,20 @@ export default function App() {
 const StyledList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 30px 30px;
+  margin: 0 30px;
   display: flex;
   flex-direction: column-reverse;
 `
 const AppGrid = styled.div`
   display: grid;
-  grid-template: 55px auto;
+  grid-template: 130px auto;
   height: 100vh;
 `
 const Main = styled.main`
   overflow-y: scroll;
+  &::after {
+    content: '';
+    display: block;
+    height: 40px;
+  }
 `

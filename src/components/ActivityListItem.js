@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import ShowMoreText from 'react-show-more-text'
+import { DivisionLine } from './DivisionLine'
 
 export default function ActivityListItem({ activities }) {
   return (
@@ -20,15 +21,7 @@ export default function ActivityListItem({ activities }) {
   )
 }
 
-const DivisionLine = styled.div`
-  background-color: var(--primary);
-  max-width: 100%;
-  height: 1px;
-  margin: 50px 0;
-`
-
 const StyledLi = styled.li`
-  :last-child {
-    margin-bottom: 100px;
-  }
+  margin: 0;
+  padding: 0;
 `

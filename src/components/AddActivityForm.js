@@ -8,54 +8,52 @@ export default function AddActivityForm({ setActivity }) {
   })
 
   return (
-    <StyledForm>
-      <form onSubmit={handleSubmit}>
-        <StyledLabel htmlFor="name">
-          Activity name
-          <StyledInput
-            name="name"
-            id="name"
-            onChange={handleChange}
-            value={newActivity.name}
-            type="text"
-            minLength="3"
-            maxLength="40"
-            placeholder="Type your activity's name here"
-            autoFocus
-            required
-            data-testid="activity-name"
-          />
-          {newActivity.name.length <= 3 && (
-            <StyledError>
-              Please add a name with at least 3 characters
-            </StyledError>
-          )}
-          {newActivity.name.length >= 40 && (
-            <StyledError>Please use a maximum of 40 characters</StyledError>
-          )}
-        </StyledLabel>
-        <StyledLabel htmlFor="details">
-          Activity details
-          <StyledTextarea
-            name="details"
-            id="details"
-            onChange={handleChange}
-            value={newActivity.details}
-            type="text"
-            maxLength="500"
-            placeholder="Write a description of the activity or some useful information"
-          />
-          {newActivity.name.length >= 500 && (
-            <StyledError>Please use a maximum of 500 characters</StyledError>
-          )}
-        </StyledLabel>
-        <StyledAddButton
-          type="submit"
-          disabled={newActivity.name.length >= 3 ? false : true}
-        >
-          Add
-        </StyledAddButton>
-      </form>
+    <StyledForm onSubmit={handleSubmit}>
+      <StyledLabel htmlFor="name">
+        Activity name
+        <StyledInput
+          name="name"
+          id="name"
+          onChange={handleChange}
+          value={newActivity.name}
+          type="text"
+          minLength="3"
+          maxLength="40"
+          placeholder="Type your activity's name here"
+          autoFocus
+          required
+          data-testid="activity-name"
+        />
+        {newActivity.name.length <= 3 && (
+          <StyledError>
+            Please add a name with at least 3 characters
+          </StyledError>
+        )}
+        {newActivity.name.length >= 40 && (
+          <StyledError>Please use a maximum of 40 characters</StyledError>
+        )}
+      </StyledLabel>
+      <StyledLabel htmlFor="details">
+        Activity details
+        <StyledTextarea
+          name="details"
+          id="details"
+          onChange={handleChange}
+          value={newActivity.details}
+          type="text"
+          maxLength="500"
+          placeholder="Write a description of the activity or some useful information"
+        />
+        {newActivity.name.length >= 500 && (
+          <StyledError>Please use a maximum of 500 characters</StyledError>
+        )}
+      </StyledLabel>
+      <StyledAddButton
+        type="submit"
+        disabled={newActivity.name.length >= 3 ? false : true}
+      >
+        Add
+      </StyledAddButton>
     </StyledForm>
   )
 
@@ -76,17 +74,17 @@ export default function AddActivityForm({ setActivity }) {
   }
 }
 
-const StyledForm = styled.section`
+const StyledForm = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: column wrap;
-  margin-bottom: 40px;
+  margin: 50px 0 0;
 `
 
 const StyledLabel = styled.label`
   display: block;
-  margin: 50px auto;
+  margin: 0 auto 40px;
 `
 
 const StyledInput = styled.input`
@@ -148,7 +146,7 @@ const StyledAddButton = styled.button`
   background: var(--tertiary);
   border: none;
   color: var(--senary);
-  margin: 0 auto;
+  margin: 30px auto;
 
   :disabled {
     opacity: 40%;
