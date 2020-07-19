@@ -8,7 +8,7 @@ export default function ActivityListItem({ activities }) {
     <>
       {activities.map(activity => {
         return (
-          <StyledLi key={activity.name} activities={activities}>
+          <StyledLi key={activity.id} activities={activities}>
             <DivisionLine data-testid="division-line" />
             <h3>{activity.name}</h3>
             <ShowMoreText lines={1} more="More" less="Less" expanded={false}>

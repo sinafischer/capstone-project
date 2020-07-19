@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { v4 as uuid } from 'uuid'
 
 export default function AddActivityForm({ setActivity }) {
   const [newActivity, setNewActivity] = useState({
     name: '',
     details: '',
+    id: uuid(),
   })
 
   return (
@@ -60,9 +62,11 @@ export default function AddActivityForm({ setActivity }) {
   function handleSubmit(event) {
     event.preventDefault()
     setActivity(newActivity)
+    console.log(newActivity)
     setNewActivity({
       name: '',
       details: '',
+      id: uuid(),
     })
   }
 
