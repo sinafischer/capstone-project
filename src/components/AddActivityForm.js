@@ -21,19 +21,23 @@ export default function AddActivityForm({ setActivity }) {
           type="text"
           minLength="3"
           maxLength="40"
-          placeholder="Type your activity's name here"
+          placeholder="Please use at least 3 characters"
           autoFocus
           required
           data-testid="activity-name"
         />
-        {newActivity.name.length <= 3 && (
-          <StyledError>
-            Please add a name with at least 3 characters
-          </StyledError>
-        )}
-        {newActivity.name.length >= 40 && (
-          <StyledError>Please use a maximum of 40 characters</StyledError>
-        )}
+        <ErrorContainer>
+          {newActivity.name.length <= 3 && (
+            <StyledErrorMessage>
+              Please use at least 3 characters
+            </StyledErrorMessage>
+          )}
+          {newActivity.name.length >= 40 && (
+            <StyledErrorMessage>
+              Please use a maximum of 40 characters
+            </StyledErrorMessage>
+          )}
+        </ErrorContainer>
       </StyledLabel>
       <StyledLabel htmlFor="details">
         Activity details
@@ -47,7 +51,9 @@ export default function AddActivityForm({ setActivity }) {
           placeholder="Write a description of the activity or some useful information"
         />
         {newActivity.name.length >= 500 && (
-          <StyledError>Please use a maximum of 500 characters</StyledError>
+          <StyledErrorMessage>
+            Please use a maximum of 500 characters
+          </StyledErrorMessage>
         )}
       </StyledLabel>
       <StyledAddButton
@@ -157,8 +163,11 @@ const StyledAddButton = styled.button`
   }
 `
 
-const StyledError = styled.div`
+const StyledErrorMessage = styled.div`
   color: var(--text-primary);
   font-size: 0.8rem;
   font-weight: 300;
+`
+const ErrorContainer = styled.div`
+  height: 20px;
 `
