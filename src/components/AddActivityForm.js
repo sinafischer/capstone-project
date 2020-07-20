@@ -50,11 +50,13 @@ export default function AddActivityForm({ setActivity }) {
           maxLength="500"
           placeholder="Write a description of the activity or some useful information"
         />
-        {newActivity.name.length >= 500 && (
-          <StyledErrorMessage>
-            Please use a maximum of 500 characters
-          </StyledErrorMessage>
-        )}
+        <ErrorContainer>
+          {newActivity.name.length >= 500 && (
+            <StyledErrorMessage>
+              Please use a maximum of 500 characters
+            </StyledErrorMessage>
+          )}
+        </ErrorContainer>
       </StyledLabel>
       <StyledAddButton
         type="submit"

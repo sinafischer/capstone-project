@@ -22,6 +22,6 @@ export default function ActivityListItem({ activities }) {
 }
 
 const StyledLi = styled.li`
-  margin: 0;
+  margin: 0 0 10px;
   padding: 0;
 `

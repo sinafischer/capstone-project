@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Header from './components/Header'
 import ActivityListItem from './components/ActivityListItem'
 import AddActivityForm from './components/AddActivityForm'
+import useLocalStorage from './services/useLocalStorage'
 
-export default function App() {
-  const [activities, setActivities] = useState([])
+export default () => {
+  const [activities, setActivities] = useLocalStorage()
 
   return (
     <AppGrid>
