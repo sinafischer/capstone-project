@@ -4,7 +4,7 @@ export default function useLocalStorage() {
   const [activities, setActivities] = useState([])
 
   useEffect(() => {
-    setActivities(JSON.parse(localStorage.getItem('myActivities') || '[]'))
+    setActivities(JSON.parse(localStorage.getItem('myActivities') || []))
   }, [])
 
   useEffect(() => {

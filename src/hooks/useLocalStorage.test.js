@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import '@testing-library/jest-dom/extend-expect'
 import '@react-mock/localstorage'
-import useLocalStorage from './services/localStorage'
+import { LocalStorageMock } from '@react-mock/localstorage'
 
 const renderComponent = ({ name }) =>
   render(

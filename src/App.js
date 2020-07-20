@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import Header from './components/Header'
 import ActivityListItem from './components/ActivityListItem'
 import AddActivityForm from './components/AddActivityForm'
-import useLocalStorage from './services/useLocalStorage'
+import useLocalStorage from './hooks/useLocalStorage'
 
-export default () => {
+export default function App() {
   const [activities, setActivities] = useLocalStorage()
 
   return (
