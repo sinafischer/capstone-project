@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import Header from './components/Header'
 import ActivityListItem from './components/ActivityListItem'
 import AddActivityForm from './components/AddActivityForm'
-import useLocalStorage from './hooks/useLocalStorage'
+import { useLocalStorage } from './hooks/useLocalStorage'
 
 export default function App() {
-  const [activities, setActivities] = useLocalStorage()
+  const [activities, setActivities] = useLocalStorage('activities')
 
   return (
     <AppGrid>

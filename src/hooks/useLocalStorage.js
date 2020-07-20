@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
 
-export default function useLocalStorage() {
-  const [activities, setActivities] = useState([])
+export const useLocalStorage = key => {
+  const [values, setValues] = useState([])
 
   useEffect(() => {
-    setActivities(JSON.parse(localStorage.getItem('myActivities') || []))
+    setValues(JSON.parse(localStorage.getItem(key) || '[]'))
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('myActivities', JSON.stringify(activities))
-  }, [activities])
+    localStorage.setItem(key, JSON.stringify(values))
+  }, [values])
 
-  return [activities, setActivities]
+  return [values, setValues]
 }
