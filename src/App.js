@@ -1,19 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Header from './components/Header'
 import ActivityListItem from './components/ActivityListItem'
 import AddActivityForm from './components/AddActivityForm'
+import useActivitiesLocalStorage from './hooks/useActivitiesLocalStorage'
 
 export default function App() {
-  const [activities, setActivities] = useState([])
-
-  useEffect(() => {
-    setActivities(JSON.parse(localStorage.getItem('myActivities') || '[]'))
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('myActivities', JSON.stringify(activities))
-  }, [activities])
+  const [activities, setActivities] = useActivitiesLocalStorage()
 
   return (
     <AppGrid>
