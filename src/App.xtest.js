@@ -1,9 +1,18 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React from 'react'
+import { render } from '@testing-library/react'
+import App from './App'
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe('App.js', () => {
+  beforeEach(() => {
+    localStorage.clear
+  })
+  it('sets activities to local storage', () => {
+    render(<App />)
+    expect(localStorage.setItem).toHaveBeenCalledTimes(1)
+  })
+
+  it('gets activities from local storage', () => {
+    render(<App />)
+    expect(localStorage.getItem).toHaveBeenCalledTimes(1)
+  })
+})
