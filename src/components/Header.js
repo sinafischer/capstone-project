@@ -14,19 +14,15 @@ export default function Header() {
 }
 
 const StyledHeader = styled.header`
-  /* display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 0 30px; */
   display: grid;
   grid-template-columns: 30px 65px auto 30px;
-  grid-template-rows: auto auto;
+  grid-template-rows: 20px 65px 15px 15px;
   align-items: center;
 `
 const StyledHeadline = styled.h1`
   display: inline;
   grid-column-start: 3;
-  grid-row-start: 1;
+  grid-row-start: 2;
   font-family: 'Ubuntu', sans-serif;
   font-weight: 700;
   font-size: 21px;
@@ -34,8 +30,8 @@ const StyledHeadline = styled.h1`
 `
 const StyledGlobe = styled.img`
   grid-column-start: 2;
-  grid-row-start: 1;
-  margin: 30px 0 0;
+  grid-row-start: 2;
+  margin: 30px 0;
 `
 const StyledDivisionLine = styled(DivisionLine)`
   grid-row-start: 3;

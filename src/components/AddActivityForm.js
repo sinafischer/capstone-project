@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
+import arrowBack from '../images/arrowBack.svg'
+import { NavLink } from 'react-router-dom'
 
 export default function AddActivityForm({ setActivity }) {
   const [newActivity, setNewActivity] = useState({
@@ -10,61 +12,68 @@ export default function AddActivityForm({ setActivity }) {
   })
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
-      <StyledLabel htmlFor="name">
-        Activity name
-        <StyledInput
-          name="name"
-          id="name"
-          onChange={handleChange}
-          value={newActivity.name}
-          type="text"
-          minLength="3"
-          maxLength="40"
-          placeholder="Please use at least 3 characters"
-          autoFocus
-          required
-          data-testid="activity-name"
-        />
-        <ErrorContainer>
-          {newActivity.name.length <= 3 && (
-            <StyledErrorMessage>
-              Please use at least 3 characters
-            </StyledErrorMessage>
-          )}
-          {newActivity.name.length >= 40 && (
-            <StyledErrorMessage>
-              Please use a maximum of 40 characters
-            </StyledErrorMessage>
-          )}
-        </ErrorContainer>
-      </StyledLabel>
-      <StyledLabel htmlFor="details">
-        Activity details
-        <StyledTextarea
-          name="details"
-          id="details"
-          onChange={handleChange}
-          value={newActivity.details}
-          type="text"
-          maxLength="500"
-          placeholder="Write a description of the activity or some useful information"
-        />
-        <ErrorContainer>
-          {newActivity.name.length >= 500 && (
-            <StyledErrorMessage>
-              Please use a maximum of 500 characters
-            </StyledErrorMessage>
-          )}
-        </ErrorContainer>
-      </StyledLabel>
-      <StyledAddButton
-        type="submit"
-        disabled={newActivity.name.length >= 3 ? false : true}
-      >
-        Add
-      </StyledAddButton>
-    </StyledForm>
+    <>
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledLabel htmlFor="name">
+          Activity name
+          <StyledInput
+            name="name"
+            id="name"
+            onChange={handleChange}
+            value={newActivity.name}
+            type="text"
+            minLength="3"
+            maxLength="40"
+            placeholder="Please use at least 3 characters"
+            autoFocus
+            required
+            data-testid="activity-name"
+          />
+          <ErrorContainer>
+            {newActivity.name.length <= 3 && (
+              <StyledErrorMessage>
+                Please use at least 3 characters
+              </StyledErrorMessage>
+            )}
+            {newActivity.name.length >= 40 && (
+              <StyledErrorMessage>
+                Please use a maximum of 40 characters
+              </StyledErrorMessage>
+            )}
+          </ErrorContainer>
+        </StyledLabel>
+        <StyledLabel htmlFor="details">
+          Activity details
+          <StyledTextarea
+            name="details"
+            id="details"
+            onChange={handleChange}
+            value={newActivity.details}
+            type="text"
+            maxLength="500"
+            placeholder="Write a description of the activity or some useful information"
+          />
+          <ErrorContainer>
+            {newActivity.name.length >= 500 && (
+              <StyledErrorMessage>
+                Please use a maximum of 500 characters
+              </StyledErrorMessage>
+            )}
+          </ErrorContainer>
+        </StyledLabel>
+        <StyledAddButton
+          type="submit"
+          disabled={newActivity.name.length >= 3 ? false : true}
+        >
+          Add
+        </StyledAddButton>
+      </StyledForm>
+      <NavLink to="/">
+        <StyledDiv>
+          <StyledIcon src={arrowBack} />
+        </StyledDiv>
+      </NavLink>
+    </>
   )
 
   function handleSubmit(event) {
@@ -91,12 +100,12 @@ const StyledForm = styled.form`
   justify-content: center;
   align-items: center;
   flex-flow: column wrap;
-  margin: 50px 0 0;
+  margin: 40px 0;
 `
 
 const StyledLabel = styled.label`
   display: block;
-  margin: 0 auto 40px;
+  margin: 0 auto 30px;
 `
 
 const StyledInput = styled.input`
@@ -158,7 +167,7 @@ const StyledAddButton = styled.button`
   background: var(--tertiary);
   border: none;
   color: var(--senary);
-  margin: 30px auto;
+  margin: 0 auto;
 
   :disabled {
     opacity: 40%;
@@ -172,4 +181,23 @@ const StyledErrorMessage = styled.div`
 `
 const ErrorContainer = styled.div`
   height: 20px;
+`
+
+const StyledIcon = styled.img`
+  background: var(--senary);
+  width: 35px;
+  height: 35px;
+`
+const StyledDiv = styled.div`
+  width: 65px;
+  height: 65px;
+  border-radius: 50px;
+  border: 2px solid var(--tertiary);
+  background: var(--senary);
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
