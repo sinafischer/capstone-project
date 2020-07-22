@@ -79,7 +79,6 @@ export default function AddActivityForm({ setActivity }) {
   function handleSubmit(event) {
     event.preventDefault()
     setActivity(newActivity)
-    console.log(newActivity)
     setNewActivity({
       name: '',
       details: '',

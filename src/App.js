@@ -32,7 +32,7 @@ export default function App() {
 
 const AppGrid = styled.div`
   display: grid;
-  grid-template-row: 130px auto;
+  grid-template: 130px auto;
   height: 100vh;
 `
 const Main = styled.main`
