@@ -112,6 +112,7 @@ const StyledInput = styled.input`
   width: 280px;
   height: 40px;
   margin: 0 auto;
+  padding: 5px;
   border-radius: 8px;
   border: solid 1px var(--primary);
   font-size: 1rem;
@@ -139,6 +140,7 @@ const StyledTextarea = styled.textarea`
   width: 280px;
   height: 200px;
   margin: 0 auto;
+  padding: 5px;
   border-radius: 8px;
   border: solid 1px var(--primary);
   font-size: 1rem;
@@ -169,7 +171,7 @@ const StyledAddButton = styled.button`
   margin: 0 auto;
 
   :disabled {
-    opacity: 40%;
+    opacity: 60%;
   }
 `
 
