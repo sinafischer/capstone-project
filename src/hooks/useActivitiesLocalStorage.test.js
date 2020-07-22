@@ -8,6 +8,7 @@ describe('App.js', () => {
   beforeEach(() => {
     localStorage.clear()
   })
+
   it('sets activities to local storage', () => {
     const history = createMemoryHistory()
     render(
@@ -15,8 +16,7 @@ describe('App.js', () => {
         <App />
       </Router>
     )
-    // toHaveBeenCalledTimes not used, because useEffect can be triggered for several reasons/times
-    expect(localStorage.setItem).toHaveBeenCalled()
+    expect(localStorage.setItem).toHaveBeenCalledTimes(1)
   })
 
   it('gets activities from local storage', () => {
@@ -26,7 +26,10 @@ describe('App.js', () => {
         <App />
       </Router>
     )
-    // toHaveBeenCalledTimes not used, because useEffect can be triggered for several reasons/times
+    // toHaveBeenCalledTimes not used, because useEffect is triggered for
+    // more than once. But app is functional, so fixing will be done in another
+    // sprint.
+    // addToDo: fix useEffect to being called more than once
     expect(localStorage.getItem).toHaveBeenCalled()
   })
 })
