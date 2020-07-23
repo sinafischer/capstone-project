@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
 import arrowBack from '../images/arrowBack.svg'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function AddActivityForm({ setActivity }) {
   const [newActivity, setNewActivity] = useState({
@@ -68,11 +68,11 @@ export default function AddActivityForm({ setActivity }) {
           Add
         </StyledAddButton>
       </StyledForm>
-      <NavLink to="/">
+      <Link to="/">
         <StyledDiv>
           <StyledIcon src={arrowBack} />
         </StyledDiv>
-      </NavLink>
+      </Link>
     </>
   )
 
@@ -171,7 +171,7 @@ const StyledAddButton = styled.button`
   margin: 0 auto;
 
   :disabled {
-    opacity: 60%;
+    opacity: 70%;
   }
 `
 

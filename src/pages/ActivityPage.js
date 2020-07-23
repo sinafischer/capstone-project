@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import ActivityListItem from '../components/ActivityListItem'
 import plus from '../images/plus.svg'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function ActivityPage({ activities }) {
   return (
@@ -10,11 +10,11 @@ export default function ActivityPage({ activities }) {
       <StyledList>
         <ActivityListItem activities={activities} />
       </StyledList>
-      <NavLink to="/create">
+      <Link to="/create">
         <StyledDiv>
           <StyledIcon src={plus} />
         </StyledDiv>
-      </NavLink>
+      </Link>
     </>
   )
 }

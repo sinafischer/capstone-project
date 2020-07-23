@@ -14,10 +14,10 @@ export default function App() {
       <Header />
       <Main>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/" component={ActivityPage}>
             <ActivityPage activities={activities} />
           </Route>
-          <Route path="/create">
+          <Route path="/create" component={AddActivityForm}>
             <AddActivityForm setActivity={updateActivities} />
           </Route>
         </Switch>
