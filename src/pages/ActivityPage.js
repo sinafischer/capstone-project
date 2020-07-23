@@ -12,7 +12,7 @@ export default function ActivityPage({ activities }) {
       </StyledList>
       <Link to="/create">
         <StyledDiv>
-          <StyledIcon src={plus} />
+          <StyledIcon src={plus} data-testid="add" />
         </StyledDiv>
       </Link>
     </>

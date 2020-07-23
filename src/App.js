@@ -5,6 +5,7 @@ import ActivityPage from './pages/ActivityPage'
 import AddActivityForm from './components/AddActivityForm'
 import useActivitiesLocalStorage from './hooks/useActivitiesLocalStorage'
 import { Switch, Route } from 'react-router-dom'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   const [activities, setActivities] = useActivitiesLocalStorage()
@@ -14,12 +15,13 @@ export default function App() {
       <Header />
       <Main>
         <Switch>
-          <Route exact path="/" component={ActivityPage}>
+          <Route exact path="/">
             <ActivityPage activities={activities} />
           </Route>
-          <Route path="/create" component={AddActivityForm}>
+          <Route path="/create">
             <AddActivityForm setActivity={updateActivities} />
           </Route>
+          <Route component={NotFound} />
         </Switch>
       </Main>
     </AppGrid>
