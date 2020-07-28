@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
 import arrowBack from '../images/arrowBack.svg'
-import { Link } from 'react-router-dom'
+import RouterLink from './RouterLink'
 
 export default function AddActivityForm({ setActivity }) {
   const [newActivity, setNewActivity] = useState({
@@ -13,6 +13,7 @@ export default function AddActivityForm({ setActivity }) {
 
   return (
     <>
+      <RouterLink route={'/'} icon={arrowBack} />
       <StyledForm onSubmit={handleSubmit}>
         <StyledLabel htmlFor="name">
           Activity name
@@ -30,7 +31,7 @@ export default function AddActivityForm({ setActivity }) {
             data-testid="activity-name"
           />
           <ErrorContainer>
-            {newActivity.name.length <= 3 && (
+            {newActivity.name.length < 3 && (
               <StyledErrorMessage>
                 Please use at least 3 characters
               </StyledErrorMessage>
@@ -54,7 +55,7 @@ export default function AddActivityForm({ setActivity }) {
             placeholder="Write a description of the activity or some useful information"
           />
           <ErrorContainer>
-            {newActivity.name.length >= 500 && (
+            {newActivity.details.length >= 500 && (
               <StyledErrorMessage>
                 Please use a maximum of 500 characters
               </StyledErrorMessage>
@@ -62,17 +63,15 @@ export default function AddActivityForm({ setActivity }) {
           </ErrorContainer>
         </StyledLabel>
         <StyledAddButton
-          type="submit"
-          disabled={newActivity.name.length >= 3 ? false : true}
+          disabled={
+            newActivity.name.length > 3 || newActivity.details.length >= 500
+              ? false
+              : true
+          }
         >
           Add
         </StyledAddButton>
       </StyledForm>
-      <Link to="/">
-        <StyledDiv>
-          <StyledIcon src={arrowBack} />
-        </StyledDiv>
-      </Link>
     </>
   )
 
@@ -182,23 +181,4 @@ const StyledErrorMessage = styled.div`
 `
 const ErrorContainer = styled.div`
   height: 20px;
-`
-
-const StyledIcon = styled.img`
-  background: var(--senary);
-  width: 35px;
-  height: 35px;
-`
-const StyledDiv = styled.div`
-  width: 65px;
-  height: 65px;
-  border-radius: 50px;
-  border: 2px solid var(--tertiary);
-  background: var(--senary);
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `

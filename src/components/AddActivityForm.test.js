@@ -7,8 +7,9 @@ import { createMemoryHistory } from 'history'
 import { Router } from 'react-router'
 
 describe('AddActivityForm.test.js', () => {
+  const history = createMemoryHistory()
+
   it('should display the entered value of the name input field after change event', () => {
-    const history = createMemoryHistory()
     render(
       <Router history={history}>
         <AddActivityForm />
@@ -20,7 +21,6 @@ describe('AddActivityForm.test.js', () => {
   })
 
   it('should display the entered value of the details input field after change event', () => {
-    const history = createMemoryHistory()
     render(
       <Router history={history}>
         <AddActivityForm />
@@ -32,7 +32,6 @@ describe('AddActivityForm.test.js', () => {
   })
 
   it('submits the values when name input meets required length', () => {
-    const history = createMemoryHistory()
     const setActivity = jest.fn()
     const { getByText } = render(
       <Router history={history}>
@@ -46,7 +45,6 @@ describe('AddActivityForm.test.js', () => {
   })
 
   it('does not call submit when the name input is less than 3 characters', () => {
-    const history = createMemoryHistory()
     const setActivity = jest.fn()
     const { getByText } = render(
       <Router history={history}>

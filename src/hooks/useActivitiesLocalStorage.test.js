@@ -5,22 +5,22 @@ import { createMemoryHistory } from 'history'
 import { Router } from 'react-router'
 
 describe('App.js', () => {
+  const history = createMemoryHistory()
+
   beforeEach(() => {
     localStorage.clear()
   })
 
   it('sets activities to local storage', () => {
-    const history = createMemoryHistory()
     render(
       <Router history={history}>
         <App />
       </Router>
     )
-    expect(localStorage.setItem).toHaveBeenCalledTimes(1)
+    expect(localStorage.setItem).toHaveBeenCalled()
   })
 
   it('gets activities from local storage', () => {
-    const history = createMemoryHistory()
     render(
       <Router history={history}>
         <App />
