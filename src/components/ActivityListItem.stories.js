@@ -17,7 +17,7 @@ addDecorator(s => (
   </>
 ))
 
-export const teaser = () => (
+export const activityListItem = () => (
   <li>
     <DivisionLine />
     <h3>Activity Name</h3>

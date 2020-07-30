@@ -2,13 +2,18 @@ import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
 :root {
-  --primary: #bae8e8;
-  --secondary: #82a2a2;
-  --tertiary: #e8badd;
-  --quarternary: #a2829a;
-  --quinary: #e8dfba;
+  /* visual highlights and logo */
+  --primary: #39899A;
+  --secondary: #2A8CB7;
+  /* interactive elements */
+  --tertiary: #B288C0;
+  --quarternary: #E4B7E5;
+  --quinary: #2E2D4D;
+  /* background */
   --senary: #fdfdfd;
+  /* titles, copy text */
   --text-primary: #72809d;
+  /* lighter shades eg for placeholder */
   --text-secondary: #d7e1ea;
   --text-tertiary: #f0f4f8;
   --text-quarternary: #fdfdfd;

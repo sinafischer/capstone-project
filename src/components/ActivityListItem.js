@@ -9,11 +9,11 @@ export default function ActivityListItem({ activities }) {
       {activities.map(activity => {
         return (
           <StyledLi key={activity.id} activities={activities}>
-            <DivisionLine data-testid="division-line" />
             <h3>{activity.name}</h3>
             <ShowMoreText lines={1} more="More" less="Less" expanded={false}>
               <p>{activity.details}</p>
             </ShowMoreText>
+            <DivisionLine data-testid="division-line" />
           </StyledLi>
         )
       })}
@@ -22,6 +22,6 @@ export default function ActivityListItem({ activities }) {
 }
 
 const StyledLi = styled.li`
-  margin: 0;
+  margin: 0 0 10px;
   padding: 0;
 `
