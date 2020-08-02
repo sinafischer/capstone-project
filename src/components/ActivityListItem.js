@@ -28,6 +28,8 @@ export default function ActivityListItem({ activities, setActivities }) {
       >
         not bookmarked
       </button>
+      <button onClick={() => setActivitiesToShow(activities)}>reset</button>
+
       {activities &&
         activitiesToShow.map(activity => {
           return (
