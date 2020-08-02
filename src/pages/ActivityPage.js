@@ -4,11 +4,14 @@ import ActivityListItem from '../components/ActivityListItem'
 import plus from '../images/plus.svg'
 import RouterLink from '../components/RouterLink'
 
-export default function ActivityPage({ activities }) {
+export default function ActivityPage({ activities, setActivities }) {
   return (
     <>
       <StyledList>
-        <ActivityListItem activities={activities} />
+        <ActivityListItem
+          activities={activities}
+          setActivities={setActivities}
+        />
       </StyledList>
       <RouterLink route={'/create'} icon={plus} />
     </>
