@@ -6,12 +6,32 @@ import bookmarkInactive from '../images/bookmarkInactive.svg'
 import bookmarkActive from '../images/bookmarkActive.svg'
 
 export default function ActivityListItem({ activities, setActivities }) {
+  const [activitiesToShow, setActivitiesToShow] = useState(activities)
+
   return (
     <>
+      <button
+        onClick={() =>
+          setActivitiesToShow(
+            activities.filter(activity => activity.bookmarked)
+          )
+        }
+      >
+        bookmarked
+      </button>
+      <button
+        onClick={() =>
+          setActivitiesToShow(
+            activities.filter(activity => !activity.bookmarked)
+          )
+        }
+      >
+        not bookmarked
+      </button>
       {activities &&
-        activities.map(activity => {
+        activitiesToShow.map(activity => {
           return (
-            <StyledLi key={activity.id} activities={activities}>
+            <StyledLi key={activity.id} activitiesToShow={activitiesToShow}>
               <StyledBookmark onClick={() => toggleBookmark(activity.id)}>
                 {activity.bookmarked ? (
                   <img src={bookmarkActive} alt="" />
