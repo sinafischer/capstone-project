@@ -1,35 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import ShowMoreText from 'react-show-more-text'
 import { DivisionLine } from './DivisionLine'
 import bookmarkInactive from '../images/bookmarkInactive.svg'
 import bookmarkActive from '../images/bookmarkActive.svg'
 
-export default function ActivityListItem({ activities, setActivities }) {
-  const [activitiesToShow, setActivitiesToShow] = useState(activities)
-
+export default function ActivityListItem({
+  activities,
+  setActivities,
+  activitiesToShow,
+}) {
   return (
     <>
-      <button
-        onClick={() =>
-          setActivitiesToShow(
-            activities.filter(activity => activity.bookmarked)
-          )
-        }
-      >
-        bookmarked
-      </button>
-      <button
-        onClick={() =>
-          setActivitiesToShow(
-            activities.filter(activity => !activity.bookmarked)
-          )
-        }
-      >
-        not bookmarked
-      </button>
-      <button onClick={() => setActivitiesToShow(activities)}>reset</button>
-
       {activities &&
         activitiesToShow.map(activity => {
           return (
