@@ -6,23 +6,37 @@ import RouterLink from '../components/RouterLink'
 import bookmarkInactive from '../images/bookmarkInactive.svg'
 import bookmarkActive from '../images/bookmarkActive.svg'
 
-export default function ActivityPage({ activities, setActivities }) {
-  const [activitiesToShow, setActivitiesToShow] = useState(activities)
-  const [filterActive, setFilterActive] = useState(false)
-
-  function toggleFilter() {
-    setFilterActive(!filterActive)
+const activitiesReducer = (state, action) => {
+  switch (action.type) {
+    case 'BOOKMARK_ACTIVITY':
+      return state.map(activity => {
+        if (activity.id === action.id) {
+          return { ...activity, bookmarked: true }
+        } else {
+          return activity
+        }
+      })
+    case 'UNBOOKMARK_ACTIVITY':
+      return state.map(activity => {
+        if (activity.id === action.id) {
+          return { ...activity, bookmarked: false }
+        } else {
+          return activity
+        }
+      })
+    default:
+      return state
   }
+}
+
+export default function ActivityPage({ activities, setActivities }) {
+  const [activitiesToShow, dispatch] = activitiesReducer(
+    activitiesReducer,
+    activities
+  )
+
   return (
     <>
-      {/* <div>
-        <button onClick={toggleFilter}>bookmarks</button>
-        {filterActive
-          ? setActivitiesToShow(
-              activities.filter(activity => activity.bookmarked)
-            )
-          : setActivitiesToShow(activities)}
-      </div> */}
       <ButtonContainer>
         <FilterButton
           onClick={() =>
