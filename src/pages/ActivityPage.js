@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import ActivityListItem from '../components/ActivityListItem'
 import plus from '../images/plus.svg'
@@ -6,52 +6,34 @@ import RouterLink from '../components/RouterLink'
 import bookmarkInactive from '../images/bookmarkInactive.svg'
 import bookmarkActive from '../images/bookmarkActive.svg'
 
-const activitiesReducer = (state, action) => {
-  switch (action.type) {
-    case 'BOOKMARK_ACTIVITY':
-      return state.map(activity => {
-        if (activity.id === action.id) {
-          return { ...activity, bookmarked: true }
-        } else {
-          return activity
-        }
-      })
-    case 'UNBOOKMARK_ACTIVITY':
-      return state.map(activity => {
-        if (activity.id === action.id) {
-          return { ...activity, bookmarked: false }
-        } else {
-          return activity
-        }
-      })
-    default:
-      return state
-  }
-}
-
 export default function ActivityPage({ activities, setActivities }) {
-  const [activitiesToShow, dispatch] = useReducer(activitiesReducer, activities)
-  const bookmarking = activity => {
-    dispatch({ type: 'BOOKMARK_ACTIVITY', id: activity.id })
-  }
+  const [activitiesToShow, setActivitiesToShow] = useState(activities)
+
   return (
     <>
       <ButtonContainer>
         <FilterButton
           onClick={() =>
-            activitiesToShow.filter(activity => activity.bookmarked)
+            setActivitiesToShow(
+              activities.filter(activity => activity.bookmarked)
+            )
           }
         >
           <StyledIcon src={bookmarkActive} alt="filter bookmarked" />
         </FilterButton>
         <FilterButton
           onClick={() =>
-            activitiesToShow.filter(activity => !activity.bookmarked)
+            setActivitiesToShow(
+              activities.filter(activity => !activity.bookmarked)
+            )
           }
         >
           <StyledIcon src={bookmarkInactive} alt="filter not bookmarked" />
         </FilterButton>
-        <FilterButton onClick={() => activitiesToShow} aria-label="reset">
+        <FilterButton
+          onClick={() => setActivitiesToShow(activities)}
+          aria-label="reset"
+        >
           <StyledIcon src={bookmarkActive} alt="" />
           <StyledIcon src={plus} alt="" />
           <StyledIcon src={bookmarkInactive} alt="" />
