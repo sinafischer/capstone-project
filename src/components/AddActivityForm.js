@@ -14,7 +14,7 @@ export default function AddActivityForm({ setActivity }) {
   return (
     <>
       <RouterLink route={'/'} icon={arrowBack} />
-      <StyledForm onSubmit={handleSubmit} data-testid="add-activity">
+      <StyledForm onSubmit={handleSubmit}>
         <StyledLabel htmlFor="name">
           Activity name
           <StyledInput
@@ -32,12 +32,12 @@ export default function AddActivityForm({ setActivity }) {
           />
           <ErrorContainer>
             {newActivity.name.length < 3 && (
-              <StyledErrorMessage data-testid="name-error-min">
+              <StyledErrorMessage>
                 Please use at least 3 characters
               </StyledErrorMessage>
             )}
             {newActivity.name.length >= 40 && (
-              <StyledErrorMessage data-testid="name-error-max">
+              <StyledErrorMessage>
                 Please use a maximum of 40 characters
               </StyledErrorMessage>
             )}
