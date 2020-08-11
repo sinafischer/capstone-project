@@ -6,7 +6,7 @@ export default function RouterLink({ icon, route }) {
   return (
     <Link to={route}>
       <StyledIconContainer>
-        <StyledIcon src={icon} />
+        <StyledIcon src={icon} data-testid="link-icon" />
       </StyledIconContainer>
     </Link>
   )

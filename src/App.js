@@ -16,7 +16,10 @@ export default function App() {
       <Main>
         <Switch>
           <Route exact path="/">
-            <ActivityPage activities={activities} />
+            <ActivityPage
+              activities={activities}
+              setActivities={setActivities}
+            />
           </Route>
           <Route path="/create">
             <AddActivityForm setActivity={updateActivities} />
@@ -33,7 +36,7 @@ export default function App() {
 
 const AppGrid = styled.div`
   display: grid;
-  grid-template-rows: 130px auto;
+  grid-template-rows: 120px auto;
   height: 100vh;
 `
 const Main = styled.main`

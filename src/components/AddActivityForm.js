@@ -62,18 +62,30 @@ export default function AddActivityForm({ setActivity }) {
             )}
           </ErrorContainer>
         </StyledLabel>
-        <StyledAddButton
-          disabled={
-            newActivity.name.length > 3 || newActivity.details.length >= 500
-              ? false
-              : true
-          }
-        >
-          Add
-        </StyledAddButton>
+        <StyledAddButton disabled={disableSubmit()}>Add</StyledAddButton>
       </StyledForm>
     </>
   )
+
+  function disableSubmit() {
+    const nameTooShort = newActivity.name.length < 2
+    const nameTooLong = newActivity.name.length >= 40
+    const detailsTooLong = newActivity.details.length >= 500
+
+    if (nameTooShort) {
+      return true
+    } else if (nameTooLong) {
+      return true
+    } else if (detailsTooLong) {
+      return true
+    } else if (nameTooShort && detailsTooLong) {
+      return true
+    } else if (nameTooLong && detailsTooLong) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   function handleSubmit(event) {
     event.preventDefault()
