@@ -15,7 +15,7 @@ describe('AddActivityForm', () => {
     cy.contains('Add').click()
   })
 
-  it('tests if the add button is disabled when minimum amount of chracters is not met', () => {
+  it('tests if the add button is disabled when minimum amount of characters is not met', () => {
     cy.get('[name="name"]').type('a')
     cy.contains('Add').should('be.disabled')
   })
