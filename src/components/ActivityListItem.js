@@ -18,9 +18,9 @@ export default function ActivityListItem({
             <StyledLi key={activity.id} activitiesToShow={activitiesToShow}>
               <StyledBookmark onClick={() => toggleBookmark(activity.id)}>
                 {activity.bookmarked ? (
-                  <img src={bookmarkActive} alt="" />
+                  <img src={bookmarkActive} alt="set bookmark" />
                 ) : (
-                  <img src={bookmarkInactive} alt="" />
+                  <img src={bookmarkInactive} alt="remove bookmark" />
                 )}
               </StyledBookmark>
               <StyledActivityName>{activity.name}</StyledActivityName>
@@ -54,6 +54,9 @@ const StyledBookmark = styled.button`
   border: none;
   background: none;
   margin: 5px auto 5px 90%;
+  :focus {
+    outline: none;
+  }
 `
 const StyledActivityName = styled.h3`
   margin-top: 10px;

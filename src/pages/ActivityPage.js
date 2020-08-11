@@ -73,6 +73,9 @@ const FilterButton = styled.button`
   border: 2px solid var(--tertiary);
   color: var(--tertiary);
   margin: 0 auto;
+  :focus {
+    outline: none;
+  }
 `
 const StyledIcon = styled.img`
   width: 15px;
