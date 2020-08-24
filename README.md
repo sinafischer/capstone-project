@@ -1,4 +1,4 @@
-# ![globe icon](./images/globe.svg)VacationDetails
+# ![logo](/images/logoFull.png)VacationDetails
 
 ## About
 
