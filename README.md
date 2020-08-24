@@ -1,4 +1,4 @@
-# VacationDetails
+# ![globe icon](./images/globe.svg)VacationDetails
 
 ## About
 
@@ -29,4 +29,15 @@ You can get yourself an impression of the app by following this link.
 
 ## How to set-up the project
 
-1.
+1. Clone this repository
+2. Install dependencies: npm install
+3. Run the App: npm start
+4. Run storybook: npm run storybook
+5. Run Jest and React Testing Library: npm test
+6. Run Cypress: npm run cypress
+
+---
+
+## Lots of thanks to...
+
+the highly committed and dedicated neuefische team in Hamburg. But most of all to the W3-2020 participants for all the inspiring talks, the support of each other, the fun, the spirit and the very special bond in a very special time. All the best to you!
